@@ -1,0 +1,16 @@
+name: isort
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+      - uses: isort/isort-action@master
+        with:
+          requirementsFiles: "requirements.txt"
+          configuration: --line-length=120 --multi-line=3

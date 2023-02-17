@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+awscli = "*"
+boto3 = "*"
+botocore = "*"
+
+[dev-packages]
+ipython = "*"
+pytest = "*"
+moto = {extras = ["sns"], version = "*"}
+pre-commit = "*"
+pylint = "*"
+mypy = "*"
+coverage-badge = "*"
+coverage = "*"
+flake8 = "*"
+flake8-html = "*"
+genbadge = {extras = ["coverage", "flake8", "tests"], version = "*"}
+pylint-quotes = "*"
+pytest-benchmark = "*"
+pytest-html = "*"
+pytest-regressions = "*"
+safety = "*"
+
+[scripts]
+teset = "pytest"
