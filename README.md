@@ -1,5 +1,5 @@
 # Publish to AWS SNS Topic - GitHub Action
-This is a GitHub Action that will publish a JSON message to an AWS SNS Topic. By default this action will return the
+This is a GitHub Action that will publish a JSON message to an AWS SNS Topic. By default, this action will return the
 entire GitHub context as the `MESSAGE` for the AWS SNS topic. To send more specific data, update the `MESSAGE`
 environment variable that is passed in your `.github/workflows.publish-to-sns.yaml`.
 
@@ -48,8 +48,8 @@ This action publishes a message in the following format to AWS SNS:
 
 ```json
 {
-  'message': [JSON-formatted message],
-  'commit_id': [GitHub Commit ID],
+  "message": "<JSON-formatted message>",
+  "commit_id": "<GitHub Commit ID>"
 }
 ```
 

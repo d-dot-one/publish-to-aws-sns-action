@@ -136,4 +136,3 @@ dmypy.json
 tests/badges/
 tests/sns-event.json
 .pytest_cache
-.pre-commit-config.yaml
