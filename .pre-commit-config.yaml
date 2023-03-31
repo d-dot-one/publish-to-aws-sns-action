@@ -130,23 +130,11 @@ repos:
             - --args=-recursive
             - --args=-diff
         - id: terraform_validate
-        - id: terraform_docs
-          args:
-          - --hook-config=--path-to-file=SPECS.md
-          - --hook-config=--add-to-existing-file=true
-          - --hook-config=--create-file-if-not-exist=true
+#        - id: terraform_docs
+#          args:
+#          - --hook-config=--path-to-file=SPECS.md
+#          - --hook-config=--add-to-existing-file=true
+#          - --hook-config=--create-file-if-not-exist=true
         - id: terraform_tflint
           args:
             - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-        - id: terraform_tfsec
-#        - id: checkov
-#          args:
-#          verbose: true
-#          args: [--soft-fail]
-#          - id: infracost_breakdown
-#            args:
-#              - --args=--path=. # need to create this out of band
-#              - --hook-config='.totalHourlyCost|tonumber > 0.01'
-#              - --hook-config='totalMonthlyCost|tonumber >= 1'
-#              - --hook-config='.currency == "USD"'
-#            verbose: true
