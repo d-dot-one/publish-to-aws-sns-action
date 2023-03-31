@@ -37,9 +37,8 @@ ARG USER_NAME="publish"
 ARG GROUP_NAME="github-action"
 ARG HOME_DIR="/usr/${USER_NAME}"
 
-RUN mkdir ${HOME_DIR}
-
-RUN groupadd ${GROUP_NAME} &&  \
+RUN mkdir ${HOME_DIR} && \
+    groupadd ${GROUP_NAME} &&  \
     useradd -d ${HOME_DIR} -s /bin/bash -g ${GROUP_NAME} ${USER_NAME} && \
     chown -R ${USER_NAME}:${GROUP_NAME} ${HOME_DIR}
 
@@ -53,4 +52,7 @@ LABEL version="0.1.1"
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
 
-ENTRYPOINT ["/usr/local/bin/pipenv", "run", "python", "/usr/publish/publish_to_sns.py"]
+RUN echo "#!/bin/bash\npipenv run python /usr/${USER_NAME}/publish_to_sns.py" > ./entrypoint.sh && \
+    chmod u+x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
