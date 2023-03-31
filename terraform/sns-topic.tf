@@ -11,10 +11,10 @@ resource "aws_sns_topic" "github_action" {
 
 resource "aws_sns_topic_policy" "github_action" {
   arn    = aws_sns_topic.github_action.arn
-  policy = data.aws_iam_policy_document.github_action.json
+  policy = data.aws_iam_policy_document.github_action_sns_topic.json
 }
 
-data "aws_iam_policy_document" "github_action" {
+data "aws_iam_policy_document" "github_action_sns_topic" {
   statement {
     actions = ["sns:Publish"]
     effect  = "Allow"
