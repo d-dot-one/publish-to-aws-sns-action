@@ -7,5 +7,9 @@ output "github_deployer_secret_key" {
 }
 
 output "sns_topic_arn" {
-  value = "The ARN of the SNS Topic that this GitHub action will publish to"
+  value = aws_sns_topic.github_action.arn
+}
+
+output "sns_topic_name" {
+  value = aws_sns_topic.github_action.name
 }
