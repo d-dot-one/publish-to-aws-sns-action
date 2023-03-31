@@ -71,5 +71,8 @@ You only need a single permission to be granted to the AWS IAM user that perform
 }
 ```
 
+## Terraform
+You will find a `terraform` directory in this repository. It contains the infrastructure that you will need for this action to work in your environment. Consult the `README.md` there for more information.
+
 ## License
 This project is licensed under the [MIT License](LICENSE.md).
