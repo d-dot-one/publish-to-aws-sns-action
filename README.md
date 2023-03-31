@@ -1,11 +1,11 @@
 # Publish to AWS SNS Topic - GitHub Action
 This is a GitHub Action that will publish a JSON message to an AWS SNS Topic. By default, this action will return the
 entire GitHub context as the `MESSAGE` for the AWS SNS topic. To send more specific data, update the `MESSAGE`
-environment variable that is passed in your `.github/workflows.publish-to-sns.yaml`.
+environment variable that is passed in your `.github/workflows/publish-to-sns.yaml`.
 
 ## Environment Variables
 The following inputs are required for this GitHub Action to successfully execute. These inputs should be entered in
-your GitHub Settings, in *Secrets and variables* > *Actions*:
+your GitHub repository settings (**Secrets > Secrets and variables > Actions > Secrets tab**):
 
 | Name                    | Type   | Description                                                |
 |-------------------------|--------|------------------------------------------------------------|
@@ -13,7 +13,6 @@ your GitHub Settings, in *Secrets and variables* > *Actions*:
 | `AWS_SECRET_ACCESS_KEY` | string | The secret access key for the AWS IAM user (40 characters) |
 | `AWS_REGION`            | string | The AWS region where the SNS topic exists                  |
 | `AWS_SNS_TOPIC_ARN`     | string | The ARN of the SNS Topic to publish to                     |
-| `MESSAGE`               | JSON   | A JSON that describes the current GitHub context (default) |
 
 ## Example Usage
 This example shows you a typical use case configuration of `.github/workflows/publish-to-sns.yaml` where the action
@@ -24,7 +23,7 @@ name: Publish to AWS SNS Topic
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, reopened, edited, ready_for_review]
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -39,7 +38,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Publish to AWS SNS Topic
-        uses: d-dot-one/publish-to-sns@main
+        uses: d-dot-one/publish-to-sns@v1
 
 ```
 
