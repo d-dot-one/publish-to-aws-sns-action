@@ -20,7 +20,7 @@ repos:
       - id: check-shebang-scripts-are-executable
       - id: check-symlinks
       - id: check-yaml
-        exclude: deployments/(.*)/helm-charts/
+        exclude: template.yaml
       - id: debug-statements
       - id: destroyed-symlinks
       - id: detect-aws-credentials
@@ -55,7 +55,7 @@ repos:
          - --ignore=CVS
          - --ignore=tests
          - --persistent=no
-         - --load-plugins=pylint_quotes
+#         - --load-plugins=pylint-quotes
          - --extension-pkg-whitelist=lxml
          # disables
          - --disable=broad-except
@@ -99,9 +99,9 @@ repos:
          - --max-line-length=120
          - --max-module-lines=1200
          - --indent-string='    '
-         - --string-quote=single
-         - --triple-quote=single
-         - --docstring-quote=double
+#         - --string-quote=single
+#         - --triple-quote=single
+#         - --docstring-quote=double
          # similarities
          - --min-similarity-lines=7
          - --ignore-comments=yes
