@@ -1,3 +1,8 @@
+variable "account_number" {
+  description = "The AWS account ID"
+  type        = string
+}
+
 variable "environment" {
   description = "The working environment that this infrastructure will be deployed into"
   type        = string
@@ -15,6 +20,11 @@ variable "public_pgp_key" {
 
 variable "region" {
   description = "The name of the AWS region that this infrastructure will be deployed into"
+  type        = string
+}
+
+variable "user_name" {
+  description = "The AWS IAM user name that lambda can assume"
   type        = string
 }
 

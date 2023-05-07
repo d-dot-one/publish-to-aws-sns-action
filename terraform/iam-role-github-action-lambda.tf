@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "github_action_role" {
       type        = "Service"
     }
     principals {
-      identifiers = ["arn:aws:iam::363876398718:user/development"]
+      identifiers = ["arn:aws:iam::${var.acccount_number}:user/${var.user_name}"]
       type        = "AWS"
     }
   }
