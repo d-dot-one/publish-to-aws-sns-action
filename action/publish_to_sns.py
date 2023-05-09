@@ -19,8 +19,8 @@ class SnsConnection:
     ACCESS_KEY_REGEX = r'^((?:ASIA|AKIA|AROA|AIDA)([A-Z0-7]{16}))$'
     REGION_REGEX = r'^(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-(\d)'
     SECRET_KEY_REGEX = r'^([a-zA-Z0-9+/]{40})$'
-    TOPIC_REGEX = r'^arn:aws:sns:(us(-gov)?|ap|ca|cn|eu|sa)-(central|' \
-                  r'(north|south)?(east|west)?)-(\d):\d{12}:'
+    #pylint: disable=line-too-long
+    TOPIC_REGEX = r'^arn:aws:sns:(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-(\d):\d{12}:'
     COMMIT_ID_REGEX = r'^[a-f0-9]{40}$'
 
     def __init__(self,
@@ -54,7 +54,7 @@ class SnsConnection:
         cid = os.environ.get('COMMIT_ID')
         if cid:
             self.commit_id: str = self._verify_and_set_github_commit_id(
-                commit_id=cid
+                commit_id=cid,
             )
 
         self.client = self._create_sns_client()
@@ -322,7 +322,7 @@ def main():
 
     response = sns_connection.publish_sns_message(
         dict_data=message,
-        sns_topic_arn=sns_connection.sns_topic_arn
+        sns_topic_arn=sns_connection.sns_topic_arn,
     )
 
     return response
