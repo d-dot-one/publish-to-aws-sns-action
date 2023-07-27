@@ -1,4 +1,4 @@
-FROM python:3.11.1 as base
+FROM python:3.11 AS base
 
 LABEL "com.github.actions.name"="Publish to AWS SNS Topic"
 LABEL "com.github.actions.description"="Publish a JSON message to an AWS SNS Topic"
@@ -25,9 +25,10 @@ RUN apt-get update && \
 COPY Pipfile .
 COPY Pipfile.lock .
 
-RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
+ENV PIPENV_VENV_IN_PROJECT=1
+RUN pipenv install --deploy
 
-FROM python-dependencies as runtime
+FROM python-dependencies AS runtime
 
 COPY --from=python-dependencies /.venv /.venv
 ENV PATH="/.venv/bin:$PATH"
@@ -47,7 +48,7 @@ RUN pipenv install --deploy --verbose
 WORKDIR ${HOME_DIR}
 USER ${USER_NAME}
 
-LABEL version="0.1.1"
+LABEL version="1.0.1"
 
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
