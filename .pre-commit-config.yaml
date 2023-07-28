@@ -40,15 +40,16 @@ repos:
       hooks:
         -  id: isort
 
-    - repo: https://github.com/PyCQA/pylint
-      rev: v2.13.4
+#    - repo: https://github.com/PyCQA/pylint
+    - repo: local
+#      rev: v2.13.4
       hooks:
        - id: pylint
          name: pylint
          entry: pylint
          exclude: ^tests
          language: system
-         types: [file, python]
+         types: [python]
          require_serial: true
          args:
           # general config
