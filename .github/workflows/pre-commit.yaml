@@ -32,6 +32,7 @@ jobs:
 
       - name: install dependencies
         run: |
+          pipenv shell
           pipenv install --dev
 
       - name: install pre-commit
