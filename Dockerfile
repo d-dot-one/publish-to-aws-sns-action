@@ -53,7 +53,7 @@ LABEL version="1.0.1"
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
 
-RUN echo "#!/bin/bash\npipenv run python /usr/${USER_NAME}/publish_to_sns.py" > ./entrypoint.sh && \
-    chmod u+x ./entrypoint.sh
+RUN echo -e "#\!/bin/bash\npipenv run python /usr/${USER_NAME}/publish_to_sns.py" > ./entrypoint.sh && \
+    chmod +x ./entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
