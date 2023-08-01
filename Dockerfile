@@ -37,6 +37,7 @@ ENV PYTHONPATH=".:$PATH"
 ARG USER_NAME="publish"
 ARG GROUP_NAME="github-action"
 ARG HOME_DIR="/usr/${USER_NAME}"
+ENV HOME_DIR=${HOME_DIR}
 
 RUN mkdir ${HOME_DIR} && \
     groupadd ${GROUP_NAME} &&  \
@@ -56,4 +57,4 @@ COPY action/__init__.py ${HOME_DIR}
 RUN echo "#!/bin/bash\npipenv run python ${HOME_DIR}/publish_to_sns.py" > ./entrypoint.sh && \
     chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "${HOME_DIR}/entrypoint.sh"]
