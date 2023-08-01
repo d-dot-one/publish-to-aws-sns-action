@@ -37,7 +37,7 @@ ENV PYTHONPATH=".:$PATH"
 ARG USER_NAME="publish"
 ARG GROUP_NAME="github-action"
 ARG HOME_DIR="/usr/${USER_NAME}"
-ENV HOME_DIR="/usr/${USER_NAME}"
+ENV HOME_DIR=${HOME_DIR}
 
 RUN mkdir ${HOME_DIR} && \
     groupadd ${GROUP_NAME} &&  \
