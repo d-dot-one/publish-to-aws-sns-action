@@ -49,7 +49,7 @@ RUN pipenv install --deploy --verbose
 WORKDIR ${HOME_DIR}
 USER ${USER_NAME}
 
-LABEL version="1.0.3"
+LABEL version="1.0.4"
 
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
