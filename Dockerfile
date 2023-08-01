@@ -1,4 +1,4 @@
-FROM python:3.11 AS base
+FROM python:3.11.4-slim AS base
 
 LABEL "com.github.actions.name"="Publish to AWS SNS Topic"
 LABEL "com.github.actions.description"="Publish a JSON message to an AWS SNS Topic"
@@ -8,10 +8,10 @@ LABEL maintainer="d-dot-one"
 LABEL repository="https://github.com/d-dot-one/publish-to-sns"
 
 # Setup env
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV PYTHONFAULTHANDLER 1
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV PYTHONFAULTHANDLER=1
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 FROM base AS python-dependencies
