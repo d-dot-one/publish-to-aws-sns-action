@@ -56,4 +56,4 @@ COPY action/__init__.py ${HOME_DIR}
 RUN echo "#!/bin/bash\npipenv run python ${HOME_DIR}/publish_to_sns.py" > ./entrypoint.sh && \
     chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/publish/entrypoint.sh"]
