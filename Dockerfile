@@ -1,4 +1,4 @@
-FROM python:3.11 AS base
+FROM python:3.11.4-slim AS base
 
 LABEL "com.github.actions.name"="Publish to AWS SNS Topic"
 LABEL "com.github.actions.description"="Publish a JSON message to an AWS SNS Topic"
@@ -8,10 +8,10 @@ LABEL maintainer="d-dot-one"
 LABEL repository="https://github.com/d-dot-one/publish-to-sns"
 
 # Setup env
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV PYTHONFAULTHANDLER 1
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV PYTHONFAULTHANDLER=1
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 FROM base AS python-dependencies
@@ -48,12 +48,12 @@ RUN pipenv install --deploy --verbose
 WORKDIR ${HOME_DIR}
 USER ${USER_NAME}
 
-LABEL version="1.0.1"
+LABEL version="1.0.3"
 
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
 
-RUN echo -e "#\!/bin/bash\npipenv run python /usr/${USER_NAME}/publish_to_sns.py" > ./entrypoint.sh && \
+RUN echo "#!/bin/bash\npipenv run python ${HOME_DIR}/publish_to_sns.py" > ./entrypoint.sh && \
     chmod +x ./entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
