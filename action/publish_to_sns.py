@@ -113,8 +113,8 @@ class SnsConnection:
         result = re.match(self.SECRET_KEY_REGEX, secret_access_key)
 
         if not result:
-            message = f'The provided AWS secret access key does not appear to ' \
-                      f'be valid: {str(secret_access_key)}'
+            message = 'The provided AWS secret access key does not appear to ' \
+                      'be valid'
             logger.warning(message)
             raise ValueError(message)
 
