@@ -14,12 +14,13 @@ logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 class SnsConnection:
     """ create a connection to AWS SNS and perform various operations """
     ACCESS_KEY_REGEX = r'^((?:ASIA|AKIA|AROA|AIDA)([A-Z0-7]{16}))$'
     REGION_REGEX = r'^(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-(\d)'
     SECRET_KEY_REGEX = r'^([a-zA-Z0-9+/]{40})$'
-    #pylint: disable=line-too-long
+    # pylint: disable=line-too-long
     TOPIC_REGEX = r'^arn:aws:sns:(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-(\d):\d{12}:'
     COMMIT_ID_REGEX = r'^[a-f0-9]{40}$'
 
@@ -90,7 +91,7 @@ class SnsConnection:
         except Exception as err:
             logger.exception(f'Unable to obfuscate the passed access key ID '
                              f'({self.obfuscated_access_key_id}): {str(err)}')
-            raise Exception from err
+            raise Exception from err  # pylint: disable=broad-exception-raised
 
         return access_key_id
 
@@ -125,7 +126,7 @@ class SnsConnection:
         except Exception as err:
             logger.exception(
                 f'Unable to obfuscate the secret access key: {str(err)}')
-            raise Exception from err
+            raise Exception from err  # pylint: disable=broad-exception-raised
 
         return secret_access_key
 
@@ -285,6 +286,7 @@ class SnsConnection:
                 Subject='Terraform Cloud state fetch',
             )
             if not (publish_response or isinstance(publish_response, dict)):
+                # pylint: disable=broad-exception-raised
                 raise Exception(
                     f'Malformed response from SNS Publish. Expected a dictionary, '
                     f'got {type(publish_response)} -- {str(publish_response)}')
@@ -294,9 +296,9 @@ class SnsConnection:
             if err_msg == 'InvalidParameterValue':
                 logger.exception(
                     f'Unable to publish SNS message: {str(err_msg)}')
-                raise Exception(err) from err
+                raise Exception(err) from err  # pylint: disable=broad-exception-raised
         except Exception as err:
-            raise Exception(err) from err
+            raise Exception(err) from err  # pylint: disable=broad-exception-raised
 
         return publish_response
 
