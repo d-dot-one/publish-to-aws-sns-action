@@ -49,12 +49,12 @@ RUN pipenv install --deploy --verbose
 WORKDIR ${HOME_DIR}
 USER ${USER_NAME}
 
-LABEL version="1.0.4"
-
 COPY action/publish_to_sns.py ${HOME_DIR}
 COPY action/__init__.py ${HOME_DIR}
 
 RUN echo "#!/bin/bash\npipenv run python ${HOME_DIR}/publish_to_sns.py" > ./entrypoint.sh && \
     chmod +x ./entrypoint.sh
+
+LABEL version="1.1.0"
 
 ENTRYPOINT ["/bin/bash", "-c", "${HOME_DIR}/entrypoint.sh"]

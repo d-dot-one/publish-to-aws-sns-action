@@ -30,7 +30,7 @@ jobs:
           path: ~/.tflint.d/plugins
           key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
 
-      - uses: terraform-linters/setup-tflint@v3
+      - uses: terraform-linters/setup-tflint@ba6bb2989f94daf58a4cc6eac2c1ca7398a678bf  # v3
         name: setup tflint
         with:
           tflint_version: v0.47.0
@@ -50,20 +50,6 @@ jobs:
       - name: install requirements
         run: |
           pip install -r requirements.txt
-
-#      - name: install pipenv
-#        run: |
-#          python -m pip install pipenv
-#
-#      - id: cache-pipenv
-#        uses: actions/cache@627f0f41f6904a5b1efbaed9f96d9eb58e92e920  # v1
-#        with:
-#          path: ~/.local/share/virtualenvs
-#          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-#
-#      - name: install dependencies
-#        run: |
-#          pipenv install --dev
 
       - name: install pre-commit
         uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507
