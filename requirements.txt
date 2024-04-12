@@ -24,7 +24,7 @@ flake8==6.1.0
 flake8-html==0.4.3
 genbadge[coverage,flake8,tests]==1.1.0
 identify==2.5.26 ; python_version >= '3.8'
-idna==3.4 ; python_version >= '3.5'
+idna==3.7 ; python_version >= '3.5'
 iniconfig==2.0.0 ; python_version >= '3.7'
 ipython==8.14.0
 isort==5.12.0 ; python_full_version >= '3.8.0'
