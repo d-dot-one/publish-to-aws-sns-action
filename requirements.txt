@@ -19,7 +19,7 @@ dill==0.3.7 ; python_version >= '3.11'
 distlib==0.3.7
 dparse==0.6.3 ; python_version >= '3.6'
 executing==1.2.0
-filelock==3.12.2 ; python_version >= '3.7'
+filelock==3.20.1 ; python_version >= '3.7'
 flake8==6.1.0
 flake8-html==0.4.3
 genbadge[coverage,flake8,tests]==1.1.0
