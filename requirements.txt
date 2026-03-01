@@ -86,7 +86,7 @@ wcwidth==0.2.6
 werkzeug==3.0.6 ; python_version >= '3.8'
 wrapt==1.15.0 ; python_version >= '3.11'
 xmltodict==0.13.0 ; python_version >= '3.4'
-awscli==1.29.16
+awscli==1.44.38
 colorama==0.4.4 ; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'
 docutils==0.16 ; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'
 pyasn1==0.5.0 ; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'
